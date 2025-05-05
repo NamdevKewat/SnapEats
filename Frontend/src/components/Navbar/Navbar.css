@@ -22,7 +22,7 @@
     gap: 40px;
 }
 
-.navbar button{
+.navbar .btn{
     background: transparent;
     font-size: 16px;
     color: #49557e;
@@ -33,7 +33,7 @@
     transition: 0.3s;
 }
 
-.navbar button:hover{
+.navbar .btn:hover{
     background-color: #fff4f2;
 }
 
@@ -75,7 +75,7 @@
     .navbar-right img{
         width: 22px;
     }
-    .navbar-right button{
+    .navbar-right .btn{
         padding: 8px 25px;
     }
 }
@@ -94,7 +94,7 @@
     .navbar-right img{
         width: 22px;
     }
-    .navbar-right button{
+    .navbar-right .btn{
         padding: 8px 25px;
     }
 }
@@ -113,7 +113,7 @@
     .navbar-right img{
         width: 20px;
     }
-    .navbar-right button{
+    .navbar-right .btn{
         padding: 7px 20px;
         font-size: 15px; 
     }

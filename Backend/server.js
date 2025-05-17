@@ -26,3 +26,4 @@ app.listen(port,()=>{
     console.log(`Server started in port http://localhost:${port}`)
 })
 
+// mongodb+srv://neptune:asuna@cluster0.vbet7ym.mongodb.net/?

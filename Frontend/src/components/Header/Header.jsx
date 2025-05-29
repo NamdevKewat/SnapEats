@@ -8,7 +8,7 @@ const Header = () => {
         <h2>Order your favorite food here</h2>
         <p>Craving something delicious? Order now and let the feast come to you! 
         </p>
-        <button>View Menu</button>
+        <button onClick={()=>setMenu("Menu")}>View Menu</button>
       </div>
     </div>
   )

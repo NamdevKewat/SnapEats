@@ -16,7 +16,6 @@ const Navbar = ({setShowLogin}) => {
         
         <Link to="/" onClick={()=>{setMenu("Home")}} className={menu==="Home"?"active":""}>Home</Link>
         <a href='#explore-menu' onClick={()=>setMenu("Menu")} className={menu==="Menu"?"active":""}>Menu</a>
-        <a href='#app-download' onClick={()=>setMenu("Mobile-app")} className={menu==="Mobile-app"?"active":""}>Mobile-app</a>
         <a href='#footer' onClick={()=>{setMenu("Contact-us")}} className={menu==="Contact-us"?"active":""}>Contact us</a>
       </ul>
       <div className="navbar-right">
@@ -25,7 +24,7 @@ const Navbar = ({setShowLogin}) => {
         <Link to='/cart' ><img src={assets.basket_icon} alt="" className="" /></Link>
             <div className={getTotalCartAmount()===0?"":"dot"}></div>
         </div>
-        <Link to={"/signup"} className='btn' onClick={()=>{setShowLogin(true)}}>Sign in</Link>
+        <Link to={"/"} className='btn' onClick={()=>{setShowLogin(true)}}>Sign in</Link>
       </div>
     </div>
   )

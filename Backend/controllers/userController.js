@@ -35,8 +35,10 @@ const registerUser = async(req,res)=>{
     try{
         //checking is user already exists
         const exists = await userModel.find({email});
-        if(exists){
+        console.log(exists);
+        if(exists.length!=0){
             return res.json({success:false,message:"User already exists"});
+            
         }
         //validating email format & strong password
         if(!validator.isEmail(email)){

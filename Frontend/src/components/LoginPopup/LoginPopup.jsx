@@ -7,7 +7,7 @@ import { StoreContext } from '../../context/StoreContext';
 import axios from 'axios';
 
 const LoginPopup = ({setShowLogin}) => {
-
+  
   const {url,setToken,token} = useContext(StoreContext);
   const [currState , setCurrState] = useState("Login");
   const [data,setData] = useState({
@@ -21,18 +21,21 @@ const LoginPopup = ({setShowLogin}) => {
     const value = event.target.value;
     setData(data=>({...data,[name]:value}));
   }
-
+  let response;
   const onLogin = async(event) =>{
     event.preventDefault();
     let newUrl = url;
     if(currState==="Login"){
-      newUrl +="/api/user/login";
+      newUrl+="/api/user/login";
+      response = await axios.post("http://localhost:4000/api/user/login",data); 
     } 
     else{
       newUrl += "/api/user/register";
+      response = await axios.post("http://localhost:4000/api/user/register",data); 
     }
 
-    const response = await axios.post(newUrl,data);
+    
+  
     if(response.data.success){
       setToken(response.data.token);
       localStorage.setItem("token",response.data.token);
@@ -43,13 +46,11 @@ const LoginPopup = ({setShowLogin}) => {
     }
   }
 
-  useEffect(()=>{
-    console.log(data);
-  },[data]);
+
 
   return (
     <div className='login-popup'>
-      <form className="login-popup-container">
+      <form onSubmit={onLogin} className="login-popup-container">
         <div className="login-popup-title">
           <h2>{currState}</h2>
           <img onClick={()=>setShowLogin(false)} src={assets.cross_icon} alt="" />

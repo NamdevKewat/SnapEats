@@ -4,19 +4,19 @@ import fs from 'fs';
 
 const addFood = async(req,res) =>{
     let image_filename = `${req.filename}`;
-
+    console.log(`request=`,req.file);
     const food = new foodModel({
         name:req.body.name,
         description:req.body.description,
         price:req.body.price,
         category:req.body.category,
-        image:image_filename
+        image:req.file.originalname
     })
     try{
         await food.save();
         res.json({success:true,message:"Food Added"})
     }catch(error){
-        console.log(err);
+        console.log(error);
         res.json({success:false,message:"Error"});
     }
 }
@@ -25,7 +25,8 @@ const addFood = async(req,res) =>{
 const listFood = async (req,res)=>{
     try{
         const food = await foodModel.find({});
-        res.json({success:true,data:foods})
+        console.log("food=",food);
+        res.json({success:true,data:food})
     }catch(err){
         console.log(err);
         res.json({successfalse,message:"Error"});

@@ -4,7 +4,7 @@ import axios from "axios";
 export const StoreContext = createContext(null);
 const StoreContextProvider = (props) =>{
     const [cartItems , setCartItems] = useState({});
-    let url = "https://localhost:4000";
+    let url = "http://localhost:4000";
     const [token,setToken] = useState("");
     let [food_list,setFood_list] = useState([]);
 
@@ -34,8 +34,7 @@ const StoreContextProvider = (props) =>{
 
     const fetchFoodList = async() =>{
         const response = await axios.get("http://localhost:4000/api/food/list");
-        console.log(url);
-        console.log(response);
+        console.log("response=",response.data);
         setFood_list(response.data.data);
     }
 

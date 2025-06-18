@@ -11,7 +11,7 @@ const Add = ({url}) => {
         name:"",
         description:"",
         price:"",
-        category:""
+        category:"Salad"
     })
 
     const onChangeHandler = (event) =>{
@@ -24,11 +24,11 @@ const Add = ({url}) => {
         event.preventDefault();
         const formData = new FormData();
         formData.append("name",data.name);
-        formData.append("desciption",data.description);
-        formData.append("price",data.price);
+        formData.append("description",data.description);
+        formData.append("price",Number(data.price));
         formData.append("category",data.category);
         formData.append("image",image);
-        const response = await axios.post(`${url}/api/food/add,formData`);
+        const response = await axios.post(`${url}/api/food/add`,formData);
         if(response.data.success){
             setData({
                 name:"",
@@ -46,14 +46,13 @@ const Add = ({url}) => {
 
   return (
     <div className='add'>
-      <form action="" className="flex-col" onSubmit={onSubmitHandler}>
+      <form action="" className="flex-col" onSubmit={onSubmitHandler} onChange={console.log("data=",data)}>
         <div className="add-image-upload flex-col">
             <p>Upload Image</p>
             <label htmlFor="image">
                 <img src={image?URL.createObjectURL(image):assets.upload_area} alt="" />
             </label>
             <input onChange={(e)=>setImage(e.target.files[0])} type="file" id='image' hidden required/>
-
         </div>
         <div className="add-product-name flex-col">
             <p>Product Name</p>
@@ -66,7 +65,7 @@ const Add = ({url}) => {
         <div className="add-category-price">
             <div className="add-category flex-col">
                 <p>Product Category</p>
-                <select onChange={onChangeHandler} name="category" id="">
+                <select onChange={onChangeHandler} name="category" id="" >
                     <option value="Salad">Salad</option>
                     <option value="Rolls">Rolls</option>
                     <option value="Deserts">Deserts</option>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios';
 import {toast} from "react-toastify";
@@ -28,6 +28,10 @@ const List = ({url}) => {
       toast.error("Error");
     }
   }
+
+  useEffect(()=>{
+    fetchList()
+  },[]);
 
   return (
     <div className='list add flex-col'>
